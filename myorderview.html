@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />.
+		<style type="text/css">
+			p.title{
+				height:26px;
+				line-height: 35px;
+				padding-left: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">订单明细</h1>
+		</header>
+		<div class="mui-content" style="padding-top: 30px;">
+		    <p class="title">收货人信息</p>
+		    <ul class="mui-table-view">
+		    		<li class="mui-table-view-cell">
+		                订单号：<span id="tborderid"></span>
+		            </li>
+		            <li class="mui-table-view-cell">
+		                下单时间：<span id="tbctime"></span>
+		            </li>
+		            <li class="mui-table-view-cell">
+		                收货人：<span id="tbtruename"></span>
+		            </li>
+		            <li class="mui-table-view-cell">
+		                电话：<span id="tbtel"></span>
+		            </li>
+		            <li class="mui-table-view-cell">
+		                地址：<span id="tbaddress"></span>
+		            </li>
+		             <li class="mui-table-view-cell">
+		                总价：￥<span id="tbsumprice"></span>
+		            </li>
+		        </ul>
+		    <p class="title">购买的商品</p>
+		    
+		    <ul class="mui-table-view" id="itemsbox">
+		        
+		    </ul>
+		    
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function(){
+				var self = plus.webview.currentWebview();
+				var orderid=self.orderid;
+				console.log(orderid);
+				var requrl=localStorage.getItem("requrl");
+				mui.ajax(requrl,{
+						data:{
+							rnum:"11",
+	                  		orderid:orderid
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							//console.log(JSON.stringify(data));
+							console.log(JSON.stringify(data.orderitems))
+							document.getElementById("tborderid").innerText=data.orderhead.orderid;
+							document.getElementById("tbctime").innerText=data.orderhead.ctime;
+							
+							document.getElementById("tbtruename").innerText=data.orderhead.sname;
+							document.getElementById("tbtel").innerText=data.orderhead.stel;
+							document.getElementById("tbaddress").innerText=data.orderhead.saddress;
+							document.getElementById("tbsumprice").innerText=data.orderhead.sumprice;
+							
+							/*
+							 
+							<li class="mui-table-view-cell mui-media">
+					            <a href="javascript:;">
+					                <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
+					                <div class="mui-media-body">
+					                                       华为P40 5G手机
+					                    <p class="mui-ellipsis">1555.00x1</p>
+					                </div>
+					            </a>
+					        </li>  
+							 
+							*/
+							var itemshtml="";
+							for (var i=0;i<data.orderitems.length;i++) {
+								itemshtml+='<li class="mui-table-view-cell mui-media">';
+								itemshtml+='<a href="javascript:;">';
+								itemshtml+='<img class="mui-media-object mui-pull-left" src="http://192.168.43.242:8080/SweetyManage/upload/'+data.orderitems[i].imgurl+'">';
+								itemshtml+='<div class="mui-media-body">';
+								itemshtml+=data.orderitems[i].proname;
+								itemshtml+='<p class="mui-ellipsis">'+data.orderitems[i].price+'.00x'+data.orderitems[i].procount+'</p>';
+								itemshtml+=' </div>';
+								itemshtml+='</a>';
+								itemshtml+='</li>  ';
+							}
+							
+							document.getElementById("itemsbox").innerHTML=itemshtml;
+							
+						}
+				});
+				
+				
+				
+			});
+			
+		</script>
+	</body>
+
+</html>

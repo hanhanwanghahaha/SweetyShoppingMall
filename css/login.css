@@ -1,0 +1,54 @@
+.mui-action-back{
+	color: #292929;
+	/*color: #ebc175;*/
+}
+.login{
+	margin-top: 100px;
+	width: 100%;
+	height: 530px;
+	/*background-color: #0062CC;*/
+}
+.login .logimg{
+	margin: 0 auto;
+	width: 80px;
+	height: 80px;
+}
+.login .logimg img{
+	width: 80px;
+	height: 80px;
+}
+.ys-input-group{
+	margin: 20px;
+}
+.ys-input-row .forget{
+	float: right;
+	margin-bottom: 12px;
+	font-size: 14px;
+	padding-right: 20px;
+	color: #6a6c6e;
+}
+.ys-input-row .ys-btn{
+	font-size: 18px;
+	height: 44px;
+	width: 100%;
+	margin-bottom: 10px;
+	color: #292929;
+	border: none;
+	background-color: #EBC175;
+}
+.ys-input-row .ys-btn-reg{
+	color: #EBC175;
+	border: none;
+	border: 1px solid #EBC175;
+	background-color: #FFFFFF;
+}
+.treaty{
+	margin: 20px;
+}
+.treaty p{
+	font-size: 12px;
+	text-align: center;
+}
+.treaty p .s-treaty{
+	color: #EBC175;
+}

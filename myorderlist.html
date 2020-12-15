@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			#ooo{
+				background-color: pink; /*为什么没有起作用*/
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="ooo">
+			<header class="mui-bar mui-bar-nav">
+			    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			    <h1 class="mui-title">我的订单</h1>
+		    </header>
+			<div class="mui-content">
+			    <div class="mui-scroll-wrapper">
+			        <div class="mui-scroll" >
+			        	<div style="height: 50px;"></div>
+						<div id="orderlistbox">
+							
+						</div>		
+			        </div>
+			    </div>
+			    
+			</div>
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui('.mui-scroll-wrapper').scroll({
+				indicators: false, //是否显示滚动条
+				deceleration:0.00006, //阻尼系数,系数越小滑动越灵敏
+				bounce: true //是否启用回弹
+			});
+			
+			/*
+				<div class="mui-card">
+					<div class="mui-card-header mui-card-media">
+						<img src="img/gou.png" />
+						<div class="mui-media-body">
+							订单号：202011251101021
+							<p>下单时间： 2016-06-30 15:30</p>
+						</div>
+					</div>
+					<div class="mui-card-content" >
+						<div style="margin: 10px;">
+							<p>收货人：张三</p>
+							<p>电话：15366665555</p>
+							<p>地址：重庆市巴南区</p>									
+						</div>
+					</div>
+					<div class="mui-card-footer">
+						<a class="mui-card-link">总价：￥5000.00</a>
+						<a class="mui-card-link">查看明细</a>
+					</div>
+				</div> 
+			*/
+			mui.ready(function(){
+				var requrl=localStorage.getItem("requrl");
+				var currentuserid=localStorage.getItem("id");
+				console.log(currentuserid);
+				mui.ajax(requrl,{
+						data:{
+							rnum:"10",
+	                  		currentid:currentuserid,	                  		
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+			                console.log(JSON.stringify(data));
+							var orderhtml="";
+							for (var i=0;i<data.length;i++) {
+								orderhtml+='<div class="mui-card" id="'+data[i].orderid+'">';
+								orderhtml+='<div class="mui-card-header mui-card-media">';
+								orderhtml+='<img src="imgs/sweety.png" />';
+								orderhtml+='<div class="mui-media-body">';
+								orderhtml+='订单号：'+data[i].orderid;
+								orderhtml+='<p>下单时间：'+data[i].ctime+'</p>';
+								orderhtml+='</div>';
+								orderhtml+='</div>';
+								orderhtml+='<div class="mui-card-content" >';
+								orderhtml+='<div style="margin: 10px;">';
+								orderhtml+='<p>收货人：'+data[i].sname+'</p>';
+								orderhtml+='<p>电话：'+data[i].stel+'</p>';
+								orderhtml+='<p>地址：'+data[i].saddress+'</p>		';
+								orderhtml+='</div>';
+								orderhtml+='</div>';
+								orderhtml+='<div class="mui-card-footer">';
+								orderhtml+='<a class="mui-card-link">总价：￥'+data[i].sumprice+'.00</a>';
+								orderhtml+='<a class="mui-card-link">查看明细</a>';
+								orderhtml+='</div>';
+								orderhtml+='</div> ';
+							}
+							
+							document.getElementById("orderlistbox").innerHTML=orderhtml;
+						}
+				});
+				
+				
+			});
+			
+			
+			mui("#orderlistbox").on("tap","div.mui-card",function(){
+				var orderid=this.getAttribute("id");
+				mui.openWindow({
+					url:"myorderview.html",
+					id:"myorderview.html",
+					extras:{
+					  	orderid:orderid
+					}
+				});
+			});
+			
+		</script>
+	</body>
+
+</html>

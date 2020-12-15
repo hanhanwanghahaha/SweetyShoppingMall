@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		
+		<style type="text/css">
+			.dm-btn{
+				display: block;
+				width: calc(100% - 20px);
+				height: 40px;
+				margin-left: 10px;
+				margin-bottom: 10px;
+				margin-top: 10px;
+				border: none;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		
+		<header class="mui-bar mui-bar-nav" style="background-color: rgba(255,192,203,0.2);">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title" >谢谢您这么可爱还注册</h1>
+		</header>
+		
+		<div class="mui-content">
+			<form class="mui-input-group" style="background-color: rgba(255,192,203,0.2);">
+			    <div class="mui-input-row">
+			        <label>用户名</label>
+			        <input type="text" class="mui-input-clear" id="tbusername" placeholder="用户名">
+			    </div>
+			    
+			    <div class="mui-input-row">
+			        <label>密码</label>
+			        <input type="text" class="mui-input-clear" id="tbpassword" placeholder="密码">
+			    </div>
+			    
+			    <div class="mui-input-row">
+			        <label>收件人名称</label>
+			        <input type="text" class="mui-input-clear" id="tbtruename" placeholder="收件人名称">
+			    </div>
+			    
+			    <div class="mui-input-row">
+			        <label>收件人电话</label>
+			        <input type="text" class="mui-input-clear" id="tbtel" placeholder="收件人电话">
+			    </div>
+			    
+			    <div class="mui-input-row">
+			        <label>收件人地址</label>
+			        <input type="text" class="mui-input-clear" id="tbaddress"  placeholder="收件人地址">
+			    </div>
+			</form>
+			
+			<form class="mui-input-group"style="background-color: rgba(255,192,203,0.1);">
+			    <button type="button" class="dm-btn" id="register" style="background-color: rgba(255,192,203,0.1);">注册</button>
+			</form>  
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			
+			document.getElementById("register").addEventListener("tap",function(){
+				var vusername=document.getElementById("tbusername").value;
+				var vpassword=document.getElementById("tbpassword").value;
+				var vtruename=document.getElementById("tbtruename").value;
+				var vtel=document.getElementById("tbtel").value;
+				var vaddress=document.getElementById("tbaddress").value;
+				
+				//var requrl="http://192.168.43.242:8080/SweetyManage/JavaApi"
+				var requrl=localStorage.getItem("requrl");
+				mui.ajax(requrl,{
+						data:{
+							rnum:"1",
+	                  		username:vusername,
+	                  		password:vpassword,
+	                  		truename:vtruename,
+	                  		tel:vtel,
+	                  		address:vaddress
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							mui.toast("注册成功!");
+							//console.log(JSON.stringify(data));
+//							setTimeout(function(){
+//								mui.back();
+//							},2000);
+							
+						}
+					});
+				});
+		</script>
+	</body>
+
+</html>

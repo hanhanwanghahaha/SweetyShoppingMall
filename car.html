@@ -1,0 +1,302 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			#listbox{
+				background-color: rgba(255,192,203,0.2);
+			}
+			
+			#listbox ul{
+				list-style: none;
+			}
+			
+			#listbox ul li{
+				height: 80px;
+				border-bottom: solid 1px #eee;
+				position: relative;
+			}
+			
+			#listbox ul li img.propic{
+				width:70px;
+				height:70px;
+				float: left;
+			}
+			#listbox ul li span{
+				display: block;
+				border: solid 1px #eee;
+				width:28px;
+				height:28px;
+				text-align: center;
+				line-height:28px;
+				float: left;
+			}
+			#gotoprolist{
+				background-color: rgba(255,192,203,0.2);
+				color: black;
+				border-width:0px 0px 0px 0px;
+			}
+			#gotopay{
+				background-color: rgba(255,192,203,0.2);
+				color: black;
+				border-width:0px 0px 0px 0px;
+			}
+			#gotoorder{
+				background-color: rgba(255,192,203,0.2);
+				color: black;
+				border-width:0px 0px 0px 0px;
+			}
+			.btnbox{
+				width: 90px;
+				height: 30px;
+				position: absolute;
+				right: 5px;
+				top:20px;
+			}
+			
+			.hidden{
+				display: none;
+			}
+			.show{
+				display: block;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="mui-content">
+		    <div id="listbox">
+		    	<ul id="itembox" style="margin-top: 10px;">
+		    		<!--<li>
+		    			<img src="img/gou.png" class="propic"/>
+		    			<p style="padding-top: 15px;">华为5G手机</p>
+		    			<p>￥5888.00</p>
+		    			<div class="btnbox"><span>-</span><span>1</span><span>+</span></div>
+		    		</li>-->
+		    		
+		    	</ul>
+		    	
+		    	<p style="padding-left: 50px;padding-bottom: 20px;">总价：<span id="pricebox"></span></p>
+		    </div>
+		   <button type="button" class="mui-btn mui-btn-blue mui-btn-block" id="gotoprolist">继续购物</button>
+		   <button type="button" class="mui-btn mui-btn-blue mui-btn-block" id="gotopay">去结算</button>
+		   <div id="userinfobox" class="hidden">
+			    <form class="mui-input-group" style="background-color: rgba(255,192,203,0.2); color: black;">
+			        <div class="mui-input-row">
+			            <label>收货人</label>
+			            <input type="text" id="tbtruename" class="mui-input-clear" placeholder="收货人">
+			        </div>
+			        <div class="mui-input-row">
+			            <label>电话</label>
+			            <input type="text" id="tbtel" class="mui-input-clear" placeholder="电话">
+			        </div>
+			        <div class="mui-input-row">
+			            <label>地址</label>
+			            <input type="text" id="tbaddress" class="mui-input-clear" placeholder="地址">
+			        </div>
+			    </form>
+			     <button type="button" id="gotoorder" class="mui-btn mui-btn-blue mui-btn-block">确认下单</button>
+		    </div>
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			
+			mui.ready(function(){
+				cardatainit();
+			});
+			
+			document.getElementById("gotoorder").addEventListener("tap",function(){
+				var truename=document.getElementById("tbtruename").value;
+				var tel=document.getElementById("tbtel").value;
+				var address=document.getElementById("tbaddress").value;
+				var userid=localStorage.getItem("id");
+				
+				var requrl=localStorage.getItem("requrl");
+				mui.ajax(requrl,{
+						data:{
+							rnum:"9",
+	                  		userid:userid,
+	                  		tbname:truename,
+	                  		tbaddress:address,
+	                  		tbtel:tel
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							mui.toast("下单成功!");
+							mui.openWindow({
+								url:"myorderlist.html",
+								id:"myorderlist.html"
+							});
+						}
+				});
+				
+			});
+			
+			
+			//初始化购物车里面的数据
+			function cardatainit()
+			{
+				//查询当前登录app的用户在购物车中加入的商品。 把查询出来的数据绑定到ul中。
+				//需要的参数：userid
+				
+				var requrl=localStorage.getItem("requrl");
+				var userid=localStorage.getItem("id");
+				
+				
+				/*
+				<li>
+		    			<img src="img/gou.png" class="propic"/>
+		    			<p style="padding-top: 15px;">华为5G手机</p>
+		    			<p>￥5888.00</p>
+		    			<div class="btnbox"><span>-</span><span>1</span><span>+</span></div>
+		    	</li>
+		    	*/
+				
+				mui.ajax(requrl,{
+						data:{
+							rnum:"6",
+							userid:userid                  		
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							console.log(JSON.stringify(data));
+							var htmlstr="";
+							var sumprice=0;
+							for (var i=0;i<data.length;i++) {
+								htmlstr+='<li>';
+									htmlstr+='<img src="http://192.168.43.242:8080/SweetyManage/upload/'+data[i].imgurl+'" class="propic"/>';
+									htmlstr+='<p style="padding-top: 15px;">'+data[i].proname+'</p>';
+									htmlstr+='<p>￥'+data[i].price+'.00</p>';
+									htmlstr+='<div class="btnbox" id="'+data[i].proid+'"><span class="btnjian">-</span><span class="numberbox">'+data[i].procount+'</span><span class="btnjia">+</span></div>';
+								htmlstr+="</li>";
+								sumprice +=parseInt(data[i].price)*parseInt(data[i].procount);//   单价*数量=小计  然后通过累加 把所有商品的价格累加起来 保存在sumprice中。 这里要注意，计算价格之前，要把单价和数量都转为数字。
+							}
+							document.getElementById("pricebox").innerText=sumprice;
+							document.getElementById("itembox").innerHTML=htmlstr;
+						}
+				});				
+			}
+			
+			
+			
+			//通过委托的方式给增加按钮绑定点击事件
+			mui("#itembox").on("tap","span.btnjia",function(){
+				var proid=this.parentNode.getAttribute("id");
+				var userid=localStorage.getItem("id");
+				var v=this.parentNode.querySelector(".numberbox").innerText;//获取该商品原来在购物车中的数量
+				v=parseInt(v);
+				v=v+1;
+				
+				var requrl=localStorage.getItem("requrl");
+				mui.ajax(requrl,{
+						data:{
+							rnum:"8",
+	                  		userid:userid,
+	                  		id:proid,
+	                  		countvalue:v
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							cardatainit();
+						}
+				});		
+			});
+			
+			
+			mui("#itembox").on("tap","span.btnjian",function(){
+				var proid=this.parentNode.getAttribute("id");
+				var userid=localStorage.getItem("id");
+				var v=this.parentNode.querySelector(".numberbox").innerText;//获取该商品原来在购物车中的数量
+				v=parseInt(v);
+				v=v-1;
+				var requrl=localStorage.getItem("requrl");
+				if(v<1)
+				{
+					//如果购物车里面商品的数量小于1,就需要删除该商品
+					mui.ajax(requrl,{
+							data:{
+								rnum:"7",
+		                  		userid:userid,
+		                  		id:proid
+							},
+							dataType:'json',//服务器返回json格式数据
+							type:'post',//HTTP请求类型
+							timeout:10000,//超时时间设置为10秒；
+							headers:{'Content-Type':'application/x-www-form-urlencoded'},
+							success:function(data){
+								if(data.msg=="ok")
+								{
+									mui.toast("删除成功!");
+								}
+								cardatainit();
+							}
+					});		
+					
+					
+				}
+				else
+				{
+					//如果商品的数量不小于1，只需要将该商品的数量减少1就可以了。
+					
+					mui.ajax(requrl,{
+							data:{
+								rnum:"8",
+		                  		userid:userid,
+		                  		id:proid,
+		                  		countvalue:v
+							},
+							dataType:'json',//服务器返回json格式数据
+							type:'post',//HTTP请求类型
+							timeout:10000,//超时时间设置为10秒；
+							headers:{'Content-Type':'application/x-www-form-urlencoded'},
+							success:function(data){
+								cardatainit();
+							}
+					});		
+					
+				}
+				
+				
+				
+			});
+			
+			
+			//点击去结算按钮
+			
+			document.getElementById("gotopay").addEventListener("tap",function(){
+				document.getElementById("tbtruename").value=localStorage.getItem('truename');
+				document.getElementById("tbtel").value=localStorage.getItem('tel');
+				document.getElementById("tbaddress").value=localStorage.getItem('address');
+				document.getElementById("userinfobox").className="show";
+			});
+			
+			//点击继续购物按钮
+			
+			document.getElementById("gotoprolist").addEventListener("tap",function(){
+				var main=plus.webview.getWebviewById("main.html");
+				mui.fire(main,'goprolist');	
+			});
+			
+			//自定义事件，用于在其他页面触发  刷新购物车里面商品列表数据
+			document.addEventListener('initdata', function() {
+				cardatainit();
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" class="feedback">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>问题反馈</title>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/feedback.css" />
+		
+		<style type="text/css">
+			#tbquestion{
+				height: 300px;
+			}
+			
+			.dm-btn{
+				display: block;
+				width: 100%;
+				height: 50px;
+				background-color: rgba(255,192,203,0.5);
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav"  style="background-color: rgba(255,192,203,0.2);>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<button id="submit" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right"></button>
+			<h1 class="mui-title">问题反馈</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<div class="mui-inline">问题和意见</div>
+				<a class="mui-pull-right mui-inline" href="#popover">
+					快捷输入
+					<span class="mui-icon mui-icon-arrowdown"></span>
+				</a>
+				<!--快捷输入具体内容，开发者可自己替换常用语-->
+				<div id="popover" class="mui-popover">
+					<div class="mui-popover-arrow"></div>
+					<div class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<ul class="mui-table-view">
+								<!--仅流应用环境下显示-->
+								<li class="mui-table-view-cell stream">
+									<a href="#">桌面快捷方式创建失败</a>
+								</li>
+								<li class="mui-table-view-cell"><a href="#">你家的蛋糕太甜了</a></li>
+								<li class="mui-table-view-cell"><a href="#">送得太慢了，简直龟速</a></li>
+								<li class="mui-table-view-cell"><a href="#">有点小贵，配不上价格</a></li>
+								<li class="mui-table-view-cell"><a href="#">送蛋糕的小姐姐好漂亮</a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="row mui-input-row">
+				<textarea id="tbquestion" class="mui-input-clear question" placeholder="请详细描述你的问题和意见..."></textarea>
+			</div>
+			<div id='image-list' class="row image-list" id="tbimg"></div>
+			<p>QQ/邮箱</p>
+			<div class="mui-input-row">
+				<input  type="text" id="tbqqoremail" class="mui-input-clear contact" placeholder="(选填,方便我们联系你 )" />
+			</div>
+			<form class="mui-input-group">
+			    <button type="button" class="dm-btn" id="send">发送</button>
+			</form>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/feedback.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui('.mui-scroll-wrapper').scroll();
+			document.getElementById("send").addEventListener("tap",function(){
+				var vquestion=document.getElementById("tbquestion").value;
+				var vtbqqoremail=document.getElementById("tbqqoremail").value;
+				//var requrl="http://192.168.43.242:8080/SweetyManage/JavaApi"
+				var requrl=localStorage.getItem("requrl");
+				console.log(vquestion);
+				console.log(vtbqqoremail);
+				mui.ajax(requrl,{
+						data:{
+							rnum:"12",
+	                  		question:vquestion,
+	                  		qqoremail:vtbqqoremail,
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							mui.toast("反馈成功!");
+							//console.log(JSON.stringify(data));
+//							setTimeout(function(){
+//								mui.back();
+//							},2000);
+							
+						}
+					});
+				});
+			
+		</script>
+	</body>
+
+</html>

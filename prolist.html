@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.item{
+				width:calc(50% - 12px);
+				height: 260px;
+				border: solid 1px #ccc;
+				float:left;
+				margin-top: 10px;
+				margin-left:10px;
+				border-radius: 5px;
+				background-color: rgba(255,192,203,0.3);
+				color: black;
+			}
+			
+			.item img{
+				width: 100%;
+				height: 200px;
+			}
+			
+			.item p{
+				line-height:10px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mui-content">
+		   <div class="mui-scroll-wrapper">
+		       <div class="mui-scroll">
+		       	
+		       		<div class="probox" id="itembox">
+			    		
+			    		
+		    		</div>
+		    		
+		       </div>
+		   </div>
+		</div>
+		
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			
+			mui('.mui-scroll-wrapper').scroll({
+				indicators: false, //是否显示滚动条
+				deceleration:0.00006, //阻尼系数,系数越小滑动越灵敏
+				bounce: true //是否启用回弹
+			});
+
+			mui.ready(function(){//页面加载完毕之后执行此处的代码
+				var requrl=localStorage.getItem("requrl");	//从localStorage中获取接口地址
+				console.log(requrl);
+				mui.ajax(requrl,{
+						data:{
+							rnum:"3"
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							
+							var itembox = document.getElementById("itembox");
+							console.log(JSON.stringify(data));
+							var itemlisthtml="";
+							for(var i=0;i<data.length;i++)
+							{
+								itemlisthtml+='<div class="item"  id="'+data[i].id+'">';
+									itemlisthtml+='<p><img src="http://192.168.43.242:8080/SweetyManage/upload/'+data[i].imgurl+'"/></p>';
+									itemlisthtml+='<p>'+data[i].proname+'</p>';
+									itemlisthtml+='<p>￥:'+data[i].price+'</p>'
+									//itemlisthtml+='<p>'+data[i].brief+'</p>';简介
+								itemlisthtml+='</div>';
+							}
+							itembox.innerHTML=itemlisthtml;
+							/*
+							 
+							 <div class="item">
+			    			<p><img src="img/g-1.png"/></p>
+			    			<p>华为p40</p>
+			    			<p>￥:5999.00</p>
+			    			<p>5G手机</p>
+			    		</div>
+							 * */
+							
+							
+							
+							
+						}
+				});
+				
+				
+				mui("#itembox").on("tap","div.item",function(){
+					var currentid=this.id;
+					console.log(currentid);
+					mui.openWindow({
+						url:"proview.html",
+						id:"proview.html",
+						extras:{
+					  		proid:currentid
+						}
+					});
+					
+					
+				});
+				
+			});	
+
+
+			
+		</script>
+	</body>
+
+</html>

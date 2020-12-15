@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		
+		<style type="text/css">
+			#imggif{
+				height: 110px;
+				margin-top: 270px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+		</style>
+		
+	</head>
+
+	<body>
+		<div class="mui-content">
+		    <ul class="mui-table-view" style="background-color: rgba(255,192,203,0.2);">
+		            <li id="btngotoorderlist" class="mui-table-view-cell">
+		                <a class="mui-navigate-right">
+		                    我的订单
+		                </a>
+		            </li>
+		            <li class="mui-table-view-cell" id="btnforgetpassword">
+		                <a class="mui-navigate-right">
+		                     修改密码
+		                </a>
+		            </li>
+		            <li class="mui-table-view-cell" id="btnfeedback">
+		                <a class="mui-navigate-right">
+		                     反馈意见
+		                </a>
+		            </li>
+		            <li class="mui-table-view-cell" id='btnaboutUs'>
+		                <a class="mui-navigate-right">
+		                     关于我们
+		                </a>
+		            </li>
+		            <li class="mui-table-view-cell" id="btncontactus">
+		                <a class="mui-navigate-right">
+		           			    联系我们
+		                </a>
+		            </li>
+		            <li class="mui-table-view-cell" id="btnlogout">
+		                <a class="mui-navigate-right">
+		           			   退出系统
+		                </a>
+		            </li>
+		        </ul>
+		        
+		        <div id="imggif">
+		        	<img src="imgs/imggif.png"/>
+		        </div>
+		</div>
+		
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-1.11.0.js" type="text/javascript" charset="UTF-8"></script>
+		<script type="text/javascript">
+			mui.init()
+			
+			aa();
+			function aa(){
+				$("#imggif").animate({"left":"160px"},2000)
+				.animate({"top":"250px"},2000)
+				.animate({"left":"0px"},2000)
+				.animate({"top":"0px"},2000,function(){
+					
+					aa();    //这一句是循环的意思
+				});
+				
+			}
+			
+			document.getElementById("btnaboutUs").addEventListener("tap",function(){
+				var webview = mui.openWindow({
+				url:'aboutUs.html',
+				extras:{
+					name:'wangtiantian' , //扩展参数
+					time:'2020-12-5'
+				}
+			});
+//				console.log("123")  用来调试代码
+			})
+			
+			document.getElementById("btncontactus").addEventListener("tap",function(){
+				var webview = mui.openWindow({
+				url:'contactus.html',
+				extras:{
+					name:'wangtiantian' , //扩展参数
+					time:'2020-12-5'
+				}
+				});
+//				console.log("123")  用来调试代码
+			})
+			
+			document.getElementById("btngotoorderlist").addEventListener("tap",function(){
+				mui.openWindow({
+					url:"myorderlist.html",
+					id:"myorderlist.html"
+				});
+				
+			});
+			
+			document.getElementById("btnforgetpassword").addEventListener("tap",function(){
+				console.log(11111);
+				mui.openWindow({
+					url:"forgetpassword.html",
+					id:"forgetpassword.html"
+				});
+				
+			});	
+			
+			document.getElementById("btnfeedback").addEventListener("tap",function(){
+				mui.openWindow({
+					url:"feedback.html",
+					id:"feedback.html"
+				});
+				
+			});	
+			
+			document.getElementById("btnlogout").addEventListener("tap",function(){
+				localStorage.removeItem("id");
+				localStorage.removeItem("truename");
+				localStorage.removeItem("address");
+				localStorage.removeItem("tel");
+				mui.openWindow({
+					url:"login.html",
+					id:"login.html"
+				});
+			
+			});
+			
+			
+			
+		</script>
+	</body>
+
+</html>

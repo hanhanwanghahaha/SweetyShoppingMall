@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+
+		<style type="text/css">
+			
+			.mui-content-padded {
+				margin-top: 25px;
+			}
+			
+			.mui-input-group {
+				margin-top: 15px;
+				
+				
+			}
+			
+			.mui-input-row{
+				height: 30px;
+			}
+			
+			.link-area {
+				display: block;
+				margin-top: 25px;
+				text-align: center;
+			}
+			
+			.spliter {
+				color: #bbb;
+				padding: 0px 8px;
+			}
+			
+			#logimg img{
+				position: relative;
+				left: 120px;
+				top: 10px;
+				width: 120px;
+				height: 120px;
+			}
+			#formym{
+				font-size: 18px;
+				background-color: rgba(255,192,203,0.2);
+			}
+			
+			#btnlogin1{
+				width: 80px;
+				border: none;
+				
+			}
+			
+			#btnlogin2{
+				width: 80px;
+				position: relative;
+				top: -66px;
+				left: 260px;
+				border: none;
+			}
+			
+			a{
+				color: #000000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color: rgba(255,192,203,0.2);">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">登录</h1>
+		</header>
+
+		<div class="mui-content">
+			<div id="logimg">
+		    		<img src="imgs/loginimg.png"/>
+		    </div>
+			<form class="mui-input-group" id="formym">
+				<div class="mui-input-row" style="height: 50px;">
+					<label>用户名</label>
+					<input type="text" id="tbnusername" class="mui-input-clear" value="杰子">
+				</div>
+
+				<div class="mui-input-row" style="height: 50px;">
+					<label>密码</label>
+					<input type="text" id="tbnpassword" class="mui-input-clear" value="123">
+				</div>
+			</form>
+			
+				<div class="mui-content-padded" id="size">
+					<button id='btnlogin' class="mui-btn-block" style="background-color: rgba(255,192,203,0.6);">登录</button>
+					<div class="">
+						<button id='btnlogin1' class="mui-btn-block" style="background-color: rgba(255,192,203,0.2);"> 
+							<a id='btnreg' >注册账号</a>
+						</button>
+						
+						<button id='btnlogin2' class="mui-btn-block" style="background-color: rgba(255,192,203,0.2);"> 
+							<a id='btnforget' >忘记密码</a>
+						</button>
+					</div>
+				</div>
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			document.getElementById("btnreg").addEventListener("tap", function() {
+				console.log(11);
+				mui.openWindow({
+					url: "reg.html",
+					id: "reg.html"
+				});
+
+			});
+
+			document.getElementById("btnforget").addEventListener("tap", function() {
+				console.log(123);
+				mui.openWindow({
+					url: "forgetpassword.html",
+					id: "forgetpassword.html"
+				});
+
+			});
+
+			document.getElementById("btnlogin").addEventListener("tap", function() {
+				var vusername = document.getElementById("tbnusername").value;
+				var vpassword = document.getElementById("tbnpassword").value;
+
+				var requrl = "http://192.168.43.242:8080/SweetyManage/JavaApi";
+				localStorage.setItem("requrl", requrl);
+
+				mui.ajax(requrl, {
+					data: {
+						rnum: "2",
+						username: vusername,
+						password: vpassword
+					},
+
+					dataType: 'json', //服务器返回json格式数据
+					type: 'post', //HTTP请求类型
+					timeout: 10000, //超时时间设置为10秒；
+					headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+					success: function(data) {
+						console.log(JSON.stringify(data));
+						if(data == null || data == "") {
+							mui.toast("用户名或者密码错误!");
+						} else {
+							console.log(data[0]);
+							mui.toast("登录成功!");
+							localStorage.setItem("id", data[0].id);
+							localStorage.setItem("truename", data[0].truename);
+							localStorage.setItem("tel", data[0].tel);
+							localStorage.setItem("address", data[0].address);
+							//登录成功之后就把当前人的信息保存在localStorage中
+							mui.openWindow({
+								url: "main.html",
+								id: "main.html"
+							});
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

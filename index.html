@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			#slider {
+				/*这个相当于position:fixed; 但是我用position:fixed;这个感觉还有加坐标、定宽度高度、设置优先级才能固定轮播，因此就用的这个简单的*/
+				position: sticky;
+				top: 2px;
+			}
+			
+			#header {
+				width: 100%;
+				bottom: 183px;
+				left: 0px;
+				background-color: rgba(255, 192, 203, 0.1);
+			}
+			
+			.mui-slider-item img {
+				width: 100%;
+				height: 300px;
+			}
+			
+			#markp {
+				background-color: rgba(255, 192, 203, 0.1);
+			}
+			
+			.markp{
+				margin: 0 auto;
+				width: 44%;
+				float: left;
+				margin: 2%;
+				margin-left: 12px;
+				margin-top: 5px;
+				border: 2px dotted pink;
+			}
+			.markp img{
+				width: 160px;
+				height: 100px;
+			}
+		</style>
+	</head>
+
+	<body style="background-color: rgba(255,192,203,0.2);">
+
+		<div id="slider" class="mui-slider">
+			<div class="mui-slider-group mui-slider-loop">
+				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate" dir="29">
+					<a href="#">
+						<img src="imgs/cake_one.jpg">
+					</a>
+				</div>
+				<!-- 第一张 -->
+				<div class="mui-slider-item" dir="26">
+					<a href="#">
+						<img src="imgs/1.png"/>
+					</a>
+				</div>
+				<!-- 第二张 -->
+				<div class="mui-slider-item" dir="27">
+					<a href="#">
+						<img src="imgs/cake_nine.jpg"/>
+					</a>
+				</div>
+				<!-- 第三张 -->
+				<div class="mui-slider-item" dir="28">
+					<a href="#">
+						<img src="imgs/eight.jpg"/>
+					</a>
+				</div>
+				<!-- 第四张 -->
+				<div class="mui-slider-item" dir="29">
+					<a href="#">
+						<img src="imgs/aiyo.jpg"/>
+					</a>
+				</div>
+
+			</div>
+			<div class="mui-slider-indicator">
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+			</div>
+		</div>
+
+		<div id="diary">
+			<div id="header">
+				<h3 style="color: pink;">今日免费专区</h3>
+			</div>
+			<div class="markp" dir="26">
+				<img src="imgs/cake_two.jpg" style="width: 100%;">
+				甜甜圈 原价￥60
+			</div>
+
+			<div class="markp" dir="27">
+				<img src="imgs/cake_four.jpg" style="width: 100%;">
+				草莓大福 原价￥30
+			</div>
+
+			<div class="markp" dir="28">
+				<img src="imgs/cake_six.jpg" style="width: 100%;">
+				马卡龙 原价￥3
+			</div>
+
+			<div class="markp" dir="29">
+				<img src="imgs/cake_seven.jpg" style="width: 100%;">
+				纸杯蛋糕 原价￥9
+			</div>
+
+		</div>
+
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			mui("#diary").on("tap", "div.markp", function() {
+				var currentid = this.getAttribute("dir");
+				mui.openWindow({
+					url: "proview.html",
+					id: "proview.html",
+					extras: {
+						proid: currentid
+					}
+				});
+			});
+
+			//定时轮播，一秒钟轮播一次
+			mui("#slider").slider({
+				interval: 1000
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,178 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"fonts/mui.ttf",
+			"imgs/sweety1.jpg",
+			"imgs/swetty1.jpg",
+			"imgs/cake_seven.jpg",
+			"imgs/cake_four.jpg",
+			"imgs/cake_one.jpg",
+			"imgs/cake_six.jpg",
+			"imgs/cake_two.jpg",
+			"imgs/aiyo.jpg",
+			"imgs/cake_nine.jpg",
+			"imgs/eight.jpg",
+			"imgs/1.png"
+		],
+		"refer": [
+			"proview.html"
+		]
+	},
+	"main.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"index.html",
+			"css/icons-extra.css",
+			"css/app.css",
+			"fonts/mui-icons-extra.ttf"
+		],
+		"refer": [
+			"my.html",
+			"car.html",
+			"prolist.html",
+			"index.html"
+		]
+	},
+	"my.html": {
+		"resources": [
+			"css/mui.min.css",
+			"fonts/mui.ttf",
+			"js/mui.min.js",
+			"imgs/imggif.png",
+			"imgs/imggif.jpg",
+			"js/jquery-1.11.0.js"
+		],
+		"refer": [
+			"aboutUs.html",
+			"myorderlist.html",
+			"login.html",
+			"contactus.html",
+			"feedback.html",
+			"forgetpassword.html"
+		]
+	},
+	"aboutUs.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf"
+		],
+		"refer": []
+	},
+	"reg.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"login.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"login.html",
+			"imgs/loginimg.png",
+			"css/login.css"
+		],
+		"refer": [
+			"main.html",
+			"reg.html",
+			"forgetpassword.html",
+			"login.html"
+		]
+	},
+	"prolist.html": {
+		"resources": [
+			"css/mui.min.css"
+		],
+		"refer": [
+			"proview.html"
+		]
+	},
+	"proview.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf"
+		],
+		"refer": []
+	},
+	"car.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js"
+		],
+		"refer": [
+			"myorderlist.html"
+		]
+	},
+	"myorderlist.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"imgs/sweety.png"
+		],
+		"refer": [
+			"myorderview.html"
+		]
+	},
+	"myorderview.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf"
+		],
+		"refer": []
+	},
+	"feedback.html": {
+		"resources": [
+			"css/feedback.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"js/feedback.js"
+		],
+		"refer": []
+	},
+	"contactus.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"imgs/qq.png",
+			"imgs/wechat.png"
+		],
+		"refer": []
+	},
+	"icon.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
+	},
+	"forgetpassword.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
+	},
+	"guide.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js"
+		],
+		"refer": [
+			"main.html",
+			"login.html"
+		]
+	}
+}

@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.mui-content p{
+				padding: 0 10px;
+			}
+			
+			
+		</style>
+	</head>
+
+	<body>
+		
+		<header class="mui-bar mui-bar-nav" style="background-color: rgba(255,192,203,0.2);>
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">商品明细</h1>
+		</header>
+		
+		<div class="mui-content"  >
+		    <p><img src=""  id="proimg" style="width: 50%;margin: 0 auto;display: block;margin-top: 20px;"/> </p>
+		    <p id="p1"></p>
+		    <p id="p2"></p>
+		    <p id="p3"></p>
+		    <p id="p4"></p>
+		    <p id="p5"></p>
+		    <button type="button" class="mui-btn" id="btnaddtocar" style="margin: 0 auto;display: block; ">加入购物车</button>
+		</div>
+		
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function(){
+				var self = plus.webview.currentWebview();//获取到当前的webview.也就是获取到当前页面对象.
+				var proid = self.proid;
+				console.log(proid);
+				var requrl=localStorage.getItem("requrl");
+				
+				mui.ajax(requrl,{
+						data:{
+							rnum:"4",
+	                  		id:proid
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							console.log(JSON.stringify(data));
+							var picimgurl="http://192.168.43.242:8080/SweetyManage/upload/"+data.imgurl;
+							document.getElementById("proimg").src=picimgurl;
+							document.getElementById("p1").innerText=data.proname;
+							document.getElementById("p2").innerHTML=data.address;
+							document.getElementById("p3").innerHTML=data.price;
+							document.getElementById("p4").innerHTML=data.brief;
+							document.getElementById("p5").innerHTML=data.descriptions;	
+						}
+				});
+				
+				
+				document.getElementById("btnaddtocar").addEventListener("tap",function(){
+					var userid=localStorage.getItem("id");
+					mui.ajax(requrl,{
+						data:{
+							rnum:"5",
+							userid:userid,
+                  			proid:proid
+
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							var car= plus.webview.getWebviewById("car.html");
+							mui.fire(car,'initdata');
+							
+							//拿到login的ID为main ，触发gocar
+							var main= plus.webview.getWebviewById("main.html");
+							mui.fire(main,'gocar');
+							
+							
+							mui.back();
+							
+							
+						}
+					});
+					
+				});
+				
+	
+			});
+		</script>
+	</body>
+
+</html>
