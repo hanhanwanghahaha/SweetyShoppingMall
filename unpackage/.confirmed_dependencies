@@ -14,7 +14,10 @@
 			"imgs/aiyo.jpg",
 			"imgs/cake_nine.jpg",
 			"imgs/eight.jpg",
-			"imgs/1.png"
+			"imgs/1.png",
+			"imgs/roll2.jpg",
+			"imgs/roll3.jpg",
+			"imgs/roll1.jpg"
 		],
 		"refer": [
 			"proview.html"
@@ -78,7 +81,8 @@
 			"css/mui.min.css",
 			"login.html",
 			"imgs/loginimg.png",
-			"css/login.css"
+			"css/login.css",
+			"imgs/sweety.png"
 		],
 		"refer": [
 			"main.html",
@@ -89,10 +93,13 @@
 	},
 	"prolist.html": {
 		"resources": [
-			"css/mui.min.css"
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf"
 		],
 		"refer": [
-			"proview.html"
+			"proview.html",
+			"searchlist.html"
 		]
 	},
 	"proview.html": {
@@ -147,7 +154,8 @@
 			"js/mui.min.js",
 			"fonts/mui.ttf",
 			"imgs/qq.png",
-			"imgs/wechat.png"
+			"imgs/wechat.png",
+			"imgs/cat2.jpg"
 		],
 		"refer": []
 	},
@@ -168,11 +176,37 @@
 	"guide.html": {
 		"resources": [
 			"css/mui.min.css",
-			"js/mui.min.js"
+			"js/mui.min.js",
+			"imgs/ya2.jpg",
+			"imgs/ya7.png",
+			"imgs/ya5.jpg",
+			"imgs/ya1.jpg",
+			"imgs/ya3.jpg",
+			"imgs/ya6.jpg",
+			"imgs/ya8.jpg",
+			"imgs/ya9.jpg",
+			"imgs/ya10.jpg",
+			"imgs/cat1.jpg",
+			"imgs/cat2.jpg",
+			"imgs/cat3.jpg",
+			"imgs/dog1.jpg",
+			"imgs/dog2.png"
 		],
 		"refer": [
 			"main.html",
 			"login.html"
+		]
+	},
+	"searchlist.html": {
+		"resources": [
+			"css/mui.min.css",
+			"css/icons-extra.css",
+			"js/jquery-1.11.0.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf"
+		],
+		"refer": [
+			"proview.html"
 		]
 	}
 }

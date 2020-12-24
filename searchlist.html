@@ -1,0 +1,357 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/slide.css"/>
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		 
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				
+			}
+			 header{
+				background-color: orange;
+			}
+			.mui-icon-arrowthinleft{
+				display: block;
+				float: left;
+				width: 30px;
+				height: 35px;
+				line-height: 35px;
+				background-color:  ;
+				font-weight: 700;
+				margin-left: 10px;
+				margin-top: -4px;
+			}
+			.inp{
+					display: block;
+				width: 250px;
+				height: 35px;
+				background-color: #FFFFFF;
+				float: left;
+				margin-left: 10px;
+				border-radius: 20px;
+				margin-top: 4px;
+			}
+			.inp>span{
+				display: block;
+				float: left;
+				width: 35px;
+				height: 35px;
+				line-height: 35px;
+				font-weight: 700;
+				margin-left: 5px;
+				margin-top: -6px;
+				
+			}
+			.inp input{
+				float: left;
+				width: 180px;
+				height: 35px;
+				border: none;
+				margin-left: 10px;
+				border-top-left-radius: 20px;
+				border-bottom-left-radius: 20px;
+				color: #000000;
+				font-size: 15px;
+			}
+			.sergo{
+				display: block;
+				float: left;
+				width: 50px;
+				height: 30px;				 
+				background-color: #000000;
+				margin-left: 10px;
+				border-radius: 20px;
+				line-height: 30px;
+				text-align: center;
+			    font-size: 15px;
+			    color: #fff;
+			    font-weight: bolder;
+			    margin-top: 8px;
+			}
+			 .center-box-e{
+			 	width: 100%;
+			 	min-height: 260px;
+			 	background-color: ;
+			 	 
+			 }
+			 .center-box-e{
+			 	width: 95%;
+			 	height: 280px;
+			 	margin: 0 auto;
+			 	background-color:   ;
+			 }
+			  
+			 .center-content-e li:nth-of-type(even){ margin-left: 8px;}
+			 .center-content-e li{
+			 	width: calc(50% - 4px);
+			 	height: 280px;
+			 	border-radius: 10px;
+			 	float: left;
+			 	background-color: #FFFFFF;
+			 	border-top-left-radius: 5px;
+			 	 
+			 	margin-top: 8px;
+			 }
+			 .center-content-e
+			 .center-content-e a{
+			 	display: block;
+			 	width: 100%;
+			 	height: 200px;
+			 }
+			 .center-content-e a img{
+			 	 width: 100%;
+			 	 height: 200px;
+			 	 border-top-left-radius: 10px;
+			 	 border-top-right-radius: 10px;
+			 }
+			 .center-content-e .desc{
+			 	width: 90%;
+			 	height: 40px;
+			 	margin:  0 auto;
+			 	text-align: center;
+			 	color: #000000;
+			 	line-height: 20px;
+			 	
+			 	background-color:  ;
+			 	overflow: hidden;
+			 	text-overflow: ellipsis;
+                /*white-space: nowrap;
+*/			 }
+			 .center-content-e .ss{
+			 	width: 95%;
+			 	height: 35px;
+			 	margin:  0 auto;
+			 	background-color:  ;
+			 	line-height: 35px;
+			 	position: relative;
+			 	text-align: center;
+			 }
+			 .ss .price i{
+			 	font-size: 11px;
+			 	font-weight: 700;
+			 	color:#000000;
+			 }
+			 .ss .price {
+			 	font-size: 18px;
+			 	font-weight: 600;
+			 	color:#CF2D28;
+			 }
+			
+			 .ss .more{
+			 	position: absolute;
+			 	top: 0px;
+			 	right: 10px;
+			 	
+			 }
+			 .ss.brif{
+			 	
+			 }
+			 
+			 /*t----top
+			  c-----center
+			  e--n----end*/
+			  li{
+			  	list-style: none;
+			  }
+			  .item {
+				width: calc(50% - 12px);
+				height: 260px;
+				border: solid 1px #ccc;
+				float: left;
+				margin-top: 10px;
+				margin-left: 10px;
+				border-radius: 5px;
+				background-color: rgba(255, 192, 203, 0.3);
+				color: black;
+			}
+			
+			.item img {
+				width: 100%;
+				height: 200px;
+			}
+			
+			.item p {
+				line-height: 10px;
+				text-align: center;
+			}
+			
+			.sergo {
+				display: block;
+				float: left;
+				width: 50px;
+				height: 30px;
+				background-color: rgba(255, 192, 203, 0.2);
+				margin-left: 10px;
+				border-radius: 20px;
+				line-height: 30px;
+				text-align: center;
+				font-size: 15px;
+				color: #fff;
+				font-weight: bolder;
+				margin-top: 8px;
+			}
+			
+			.inp>span {
+				display: block;
+				float: left;
+				width: 35px;
+				height: 35px;
+				line-height: 35px;
+				font-weight: 700;
+				margin-left: 5px;
+				margin-top: -6px;
+			}
+			
+			.inp input {
+				float: left;
+				width: 180px;
+				height: 35px;
+				border: none;
+				margin-left: 10px;
+				border-top-left-radius: 20px;
+				border-bottom-left-radius: 20px;
+				color: #000000;
+				font-size: 15px;
+			}
+			
+			.inp {
+				display: block;
+				width: 250px;
+				height: 35px;
+				background-color: #FFFFFF;
+				float: left;
+				margin-left: 10px;
+				border-radius: 20px;
+				margin-top: 4px;
+			}
+			
+			.mui-icon-arrowthinleft {
+				display: block;
+				float: left;
+				width: 30px;
+				height: 35px;
+				line-height: 30px;
+				background-color: ;
+				font-weight: 800;
+				margin-left: 30px;
+				margin-top: -3px;
+			}
+			
+		</style>
+	</head>
+  
+	<body>		 
+		<header class="mui-bar mui-bar-nav" style="background-color: rgba(255,192,203,0.2);">
+		    <a class=" mui-action-back mui-icon mui-icon-left-nav mui-icon mui-icon-arrowthinleft"></a>
+		   <a class="inp">   
+		   	<input type="text" id="searchlistcontent" value=""/>
+		  
+		   </a>
+		   
+		   <a class="sergo" id="btnserlistgo">搜索</a>
+		</header>
+	    
+		<div class="mui-content">	   
+		   <div class="center-box-e">
+		   	<ul class="center-content-e" id="itembox">
+		   		<li>
+		   			<a class="pro-picture">
+		   				<img src="img/02_mid.jpg" />
+		   			</a>
+		   			<p class="desc">解放军等级是否分季度付大嫁风尚大V就</p>
+		   			<p class="brif"></p>
+		   			<p class="ss"><span class="price"> 500<i>元</i></span><span class="more">...</span></p>
+		   		</li>		   		
+		   	</ul>
+		   </div>
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/tyslide.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function(){                      
+			    plus.webview.currentWebview().setStyle({
+			        statusbar:{background:'orange'},top:0,bottom: 0
+			　　});
+			});
+			mui('.mui-scroll-wrapper').scroll({
+				indicators:false,
+				deceleration:0.00006,
+				bounce:true
+			});
+			 
+			 
+			 mui.plusReady(function(){
+			 	var self = plus.webview.currentWebview();//获取到当前的webview.也就是获取到当前页面对象.
+				var searchcontent = self.searchcontent;
+				 
+				document.getElementById("searchlistcontent").value=searchcontent;
+				 document.getElementById("searchlistcontent").value
+				var requrl=localStorage.getItem("requrl");
+				searchcontent="%"+searchcontent+"%";
+				console.log(searchcontent);
+				mui.ajax(requrl,{
+						data:{
+							rnum:"14",
+	                  		contents:searchcontent
+	                  		 
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+							 
+							 console.log(JSON.stringify(data));
+							 var itemlisthtml="";
+							 for(var i=0;i<data.length;i++)
+							 {
+							 	itemlisthtml += '<div class="item"  id="' + data[i].id + '">';
+								itemlisthtml += '<p><img src="http://192.168.43.242:8080/SweetyManage/upload/' + data[i].imgurl + '"/></p>';
+							 	itemlisthtml += '<p>' + data[i].proname + '</p>';
+								itemlisthtml += '<p>￥:' + data[i].price + '</p>'
+								//itemlisthtml+='<p>'+data[i].brief+'</p>';简介
+								itemlisthtml += '</div>';
+							 }
+							 itembox.innerHTML=itemlisthtml;
+                              
+							
+						         }
+				});
+					
+			 })
+			 
+			 
+			 document.getElementById("searchlistcontent").addEventListener("tap",function(){
+			 	mui.back();
+			 });
+			
+			 mui("#itembox").on("tap","div.item",function(){
+			 	console.log(currentid);
+			 	var currentid=this.id;//获取点击商品的id
+						
+						mui.openWindow({
+							url:"proview.html",
+							id:"proview.html",
+							extras:{
+						  		proid:currentid//传参数
+							}
+						});
+					
+			});
+			 	
+</script>
+ 
+	</body>
+
+</html>

@@ -23,7 +23,7 @@
 			
 			.mui-slider-item img {
 				width: 100%;
-				height: 300px;
+				height: 280px;
 			}
 			
 			#markp {
@@ -43,6 +43,12 @@
 				width: 160px;
 				height: 100px;
 			}
+			#box1{
+				color: pink;
+				font-size: 20px;
+				width: 350px;
+				
+			}
 		</style>
 	</head>
 
@@ -53,13 +59,13 @@
 				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
 				<div class="mui-slider-item mui-slider-item-duplicate" dir="29">
 					<a href="#">
-						<img src="imgs/cake_one.jpg">
+						<img src="imgs/aiyo.jpg">
 					</a>
 				</div>
 				<!-- 第一张 -->
 				<div class="mui-slider-item" dir="26">
 					<a href="#">
-						<img src="imgs/1.png"/>
+						<img src="imgs/roll1.jpg"/>
 					</a>
 				</div>
 				<!-- 第二张 -->
@@ -92,7 +98,7 @@
 
 		<div id="diary">
 			<div id="header">
-				<h3 style="color: pink;">今日免费专区</h3>
+				<h3 style="color: pink;">下列产品在活动期间免费</h3>
 			</div>
 			<div class="markp" dir="26">
 				<img src="imgs/cake_two.jpg" style="width: 100%;">
@@ -113,9 +119,12 @@
 				<img src="imgs/cake_seven.jpg" style="width: 100%;">
 				纸杯蛋糕 原价￥9
 			</div>
-
+			
+			
 		</div>
+           <div id="box1">
 
+			</div>
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
 			mui("#diary").on("tap", "div.markp", function() {
@@ -133,6 +142,37 @@
 			mui("#slider").slider({
 				interval: 1000
 			});
+			
+			//倒计时
+			aa();
+			var timer1=setInterval(function(){
+				aa();
+			},1000)
+			
+			
+			function aa()
+			{
+				var endtime=new Date("2021/2/26 00:00:00");
+				var now=new Date();
+				var t=endtime.getTime()-now.getTime();
+				if(t>0)
+				{
+					var day=Math.floor(t/1000/60/60/24);
+					var hour=Math.floor(t/1000/60/60%24);
+					var mouth=Math.floor(t/1000/60%60);
+					var second=Math.floor(t/1000%60);
+					var str="距活动结束还有"+day+"天 "+hour+"小时 "+mouth+"分 "+second+"秒";
+					document.getElementById("box1").innerHTML=str;
+					
+				}
+				else
+				{
+					clearInterval(timer1);
+					document.getElementById("box1").innerHTML="活动已经结束！";
+					
+				}
+				
+			}	
 		</script>
 	</body>
 

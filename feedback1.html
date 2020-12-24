@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+
+		<style type="text/css">
+			body{
+				background-image: url(images/ddimg-1.png);		}
+			.pl-list-div {
+				padding: 15px 15px 5px 15px;
+				background: #fff;
+				width: 94%;
+				margin: 0 3% 20px 3%;
+				border-radius: 10px 10px 10px 10px;
+				background-color: pink;
+				
+			}
+			.xx{
+				margin-top:44px ;
+			}
+			.public-clear-both {
+				overflow: hidden;
+			}
+			
+			.pl-list-div-l {
+				width: 10%;
+				float: left;
+			}
+			
+			.pl-list-div-r {
+				margin-top: 8px;
+				width: 85%;
+				float: right;
+			}
+			.pl-list-div-r p{
+				color: #fff;
+			}
+			.pl-list-div-r span{
+				font-size: 20px;
+				background-color: rgba(255,192,203,0.2);
+			}
+			.wm-list-div-r-t {
+				overflow: hidden;
+			}
+			
+			.pj-c {
+				margin-top: 10px;
+			}
+			
+			.pl-list-div-l img {
+				width: 100%;
+				border-radius: 100px;
+			}
+			.wm-list-div-r-t img{
+				height: 100px;
+				width: 100px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="orderlistbox">
+		<div class="xx"></div>
+		<div class="pl-list-div public-clear-both">
+
+				<div class="pl-list-div-l">
+					<img src="imgs/dog2.png" alt="" />
+				</div>
+				
+				<div class="pl-list-div-r">
+					<p><span>甜甜屋的反馈</span></p>
+					<div class="wm-list-div-r-t">
+					    <img src="imgs/cat2.jpg"/>
+					</div>
+					<p class="pj-c">蛋糕送的很快，跟给力下次还来买，蛋糕送的很快，跟给力下次还来买，</p>
+				</div>
+				
+			</div>
+		   </div>
+
+<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui('.mui-scroll-wrapper').scroll({
+				indicators: false, //是否显示滚动条
+				deceleration:0.00006, //阻尼系数,系数越小滑动越灵敏
+				bounce: true //是否启用回弹
+			});
+			
+			mui.ready(function(){
+				var requrl=localStorage.getItem("requrl");
+				
+				
+				mui.ajax(requrl,{
+						data:{
+							rnum:"15",
+							
+	                  		                  		
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+			                console.log(JSON.stringify(data));
+							var orderhtml="";
+							for (var i=0;i<data.length;i++) {
+								orderhtml+='<div class="xx">';
+								orderhtml+='</div>';
+									orderhtml+='<div class="pl-list-div public-clear-both">';
+										orderhtml+='<div class="pl-list-div-l">';
+										orderhtml+='<img src="images/head.jpg" alt="" />';
+									    orderhtml+='</div>';
+									      orderhtml+='<div class="pl-list-div-r">';
+								       	  orderhtml+='<p><span>'+data[i].question+'</span></p>';
+									orderhtml+='<div class="wm-list-div-r-t">';
+									orderhtml+=data[i].Image
+									orderhtml+='</div>';
+										orderhtml+='<p class="pj-c">'+data[i].email+'</p>';
+										orderhtml+='</div>';
+										orderhtml+='</div>';		
+							}
+							
+							document.getElementById("orderlistbox").innerHTML=orderhtml;
+						}
+				});
+				
+				
+			});
+			
+			
+		
+		</script>
+	</body>
+
+</html>

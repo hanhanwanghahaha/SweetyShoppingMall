@@ -10,6 +10,29 @@
 
 		<link rel="stylesheet" href="css/mui.min.css">
 		<style>
+			.Image {
+			    background-image:url(imgs/cat1.jpg);
+			    background-repeat:no-repeat;
+			    background-size:100% 100%;
+			    -moz-background-size:100% 100%;
+			    opacity: 0.8;
+			}
+			
+			.ooo1 {
+			    background-image:url(imgs/dog2.png);
+			    background-repeat:no-repeat;
+			    background-size:100% 100%;
+			    -moz-background-size:100% 100%;
+			    
+			}
+			
+			.ooo {
+			    background-image:url(imgs/ya9.jpg);
+			    background-repeat:no-repeat;
+			    background-size:100% 100%;
+			    -moz-background-size:100% 100%;
+			}
+			
 			#close {
 				position: absolute;
 				width: 160px;
@@ -29,17 +52,17 @@
 				width: 200px;
 				height: 200px;
 				display: block;
-				border: 1px solid #FFFFFF;
-				border-color: rgba(255, 255, 255, 0.5);
+				/*border: 1px solid #FFFFFF;*/
+				/*border-color: rgba(255, 255, 255, 1);*/
 				text-align: center;
 				line-height: 200px;
-				border-radius: 50%;
+				border-radius: 50s%;
 				font-size: 40px;
-				color: #fff;
+				color: rgba(158,54,3,1);
 				position: absolute;
-				top: 15%;
+				top: 30px;
 				left: 50%;
-				margin-left: -100px;
+				margin-left: -90px;
 			}
 			.animate {
 				position: absolute;
@@ -55,10 +78,10 @@
 			}
 			.animate li {
 				width: 50%;
-				height: 30px;
-				line-height: 30px;
+				height: 20px;
+				line-height: 50px;
 				list-style: none;
-				font-size: 16px;
+				font-size: 20px;
 				text-align: right;
 			}
 			.animate li:nth-child(3) {
@@ -179,39 +202,39 @@
 			<div class="mui-slider-group">
 				<!-- 第一张 -->
 				<div class="mui-slider-item">
-					<div class="item-logo" style="background-color: pink">
+					<div class="item-logo Image" style="background-color: rgba(158,54,3,0.1)">
 						<a href="#">
 					    Sweety
 						</a>
-						<div class="animate guide-show">
-							<h2 class="animated bounceInDown">色香味俱全</h2>
-							<li class="animated bounceInLeft">哒哒哒</li>
-							<li class="animated bounceInRight">超级无敌可爱鸭</li>
+						<div class="animate guide-show" >
+							<h2 class="animated bounceInDown"style="color: rgba(158,54,3,1);">色香味俱全</h2>
+							<li class="animated bounceInLeft"style="color: rgba(255,200,255,1);"></li>
+							<li class="animated bounceInRight " style="color: rgba(255,200,255,1);"></li>
 						</div>
 					</div>
 				</div>
 				<!-- 第二张 -->
 				<div class="mui-slider-item">
-					<div class="item-logo" style="background-color: plum;">
+					<div class="item-logo ooo" style="background-color: plum;">
 						<a href="https://blog.csdn.net/hanhanwanghaha">
-						点击此处
+						
 						</a>
 						<div id="tips-2" class="animate mui-hidden">
-							<h2 class="animated bounceInDown">甜甜在线</h2>
-							<li class="animated bounceInLeft">点击圆框框</li>
-							<li class="animated bounceInRight">主人在线解答</li>
+							<h2 class="animated bounceInDown"style="color: rgba(255,200,255,1);">甜甜在线</h2>
+							<li class="animated bounceInLeft"style="color: black">各种口味随你选</li>
+							<li class="animated bounceInRight"style="color: rgba(255,200,255,1);">主人在线解答</li>
 						</div>
 					</div>
 				</div>
 				
 				<!-- 第三张 -->
 				<div class="mui-slider-item">
-					<div class="item-logo" style="background-color: lightpink;">
+					<div class="item-logo ooo1" style="background-color: rgba(255,192,203,0.6);">
 						<a href="#">
 						甜甜商城
 						</a>
 						<div class="animate">
-							<button id='close' class="mui-btn mui-btn-warning mui-btn-outlined">立即体验</button>
+							<button id='close' class="mui-btn mui-btn-warning mui-btn-outlined" style="background-color: rgba(158,54,3,0.8);">立即体验</button>
 						</div>
 					</div>
 				</div>
