@@ -1,0 +1,277 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css"/>
+		 <script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<style type="text/css">
+			 *{
+			 	padding: 0;
+			 	margin: 0;
+			 }
+			  
+			 body{
+			 	 
+			 	background-size: 100%;
+			 	background-image: url(img/login.jpg);
+			 	background-repeat: no-repeat;
+			 	  
+			 	  
+			 }
+			 .mui-content{
+			 	position: absolute;
+			 	width: 100%;
+			 	  height:100%;
+			 	 
+			 }
+			#btnbox span{
+				font-size: 15px;
+				color: #6a6c6e
+			}
+			#btnlogin{
+				border-radius: 40px;
+				margin-top: 20px;
+			}
+		    #btnbox{
+		    	margin-top: 20px;
+		    }  
+		    .mui-action-back{
+	        color: #292929;
+	 
+			}
+			.login{
+				width: 100%;
+				height: 530px;
+				/*background-color: #0062CC;*/
+			}
+			.login .logimg{
+				 
+				margin:70px auto;
+				width: 100%;
+				height: 100px;
+			}
+			.login .logimg img{
+				width: 100%;
+				height: 200px;
+			}
+			.ys-input-group{
+				margin: 20px;
+			}
+			
+			.ys-input-row .forget{
+				float: right;
+				margin-bottom: 12px;
+				font-size: 14px;
+				padding-right: 20px;
+				color: #6a6c6e;
+			}
+			.ys-input-row .ys-btn{
+				font-size: 18px;
+				height: 44px;
+				width: 100%;
+				margin-bottom: 10px;
+				color: #292929;
+				background-color: orange;
+			}
+			.ys-input-row .ys-btn-reg{
+				color: #EBC175;
+				border: 1px solid #EBC175;
+				background-color: #FFFFFF;
+			}
+			.treaty{
+				margin: 15px;
+			}
+			.treaty p{
+				font-size: 12px;
+				text-align: center;
+			}
+			.treaty p .s-treaty{
+				color: #EBC175;
+			}
+			#btnlogin{
+				width: 25%;
+				height: 80px;
+				margin-left:37.5%;
+			}
+             .code {
+				padding-top: 50px;
+				width: 220px;
+				 
+				background-color:  ;
+				margin: 0 auto;
+				position: relative;
+			}
+
+			.input-val {
+				 
+				background: ;
+				 
+				 
+				border-radius: 5px;
+				border: none;
+				border: 1px solid rgba(0, 0, 0, .2);
+				font-size: 11px;
+				position: absolute;
+				top: 4px;
+				left: 0px;
+			}
+
+			#canvas {
+				float: right;
+				display: inline-block;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				cursor: pointer;
+				position: absolute;
+				top: 2px;
+				right: 0px;
+			}
+
+			.btn {
+				width: 100px;
+				height: 40px;
+				background: #f1f1f1;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				margin: 20px auto 0;
+				display: block;
+				font-size: 1.2rem;
+				color: #e22e1c;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+		    <div class="login">
+		    	<div class="logimg">
+		    		 
+		    	</div>
+		    	<form class="ys-input-group">
+		    	    <div class="ys-input-row"  >		    	    	
+		    	        <input type="text" style="border-radius: 30px;border: 1px solid #EEEEEE;width: 84%;height: 55px;margin-left:8%;text-align: center;" class="ys-input-clear" id="tbusername" placeholder="用户名">
+		    	    </div>
+		    	    <div class="ys-input-row">
+		    	        <input type="password" style="border-radius: 30px;border: 1px solid #EEEEEE;width: 84%;height: 55px;margin-left:8%;text-align: center;"  class="ys-input-clear" id="tbpassword" placeholder="密码">
+		    	    </div>	
+		    	    <div class="code">
+			<input type="text" value="" placeholder="请输入验证码（不区分大小写）" class="input-val" style="width: 100px;" />
+			<canvas id="canvas" width="100" height="43"></canvas>
+			 
+			</div>
+		    	     
+		    	    <div class="ys-input-row">
+		    	        <button type="button"  class="ys-btn ys-btn-login" id="btnlogin"><span class="mui-icon mui-icon-arrowthinright" style="font-size: 55px;font-weight: 700;color: #FFFFFF;"></span></button>
+		    	    </div>	
+		    	    <div id="btnbox" style="height:40px; text-align: center;">
+		            <span id="btnreg" style="color: #000000;font-weight:700;">用户注册&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span style="color: #ACACB4;">|</span> <span style="color: #000000;font-weight:700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;忘记密码</span>
+		    	</form>
+		    </div>
+		   	
+		    <div class="treaty">
+	    		<p>
+	    			登录代表您已同意<span class="s-treaty">海豚用户协议</span>、<span class="s-treaty">隐私协议</span>
+	    		</p>
+		    </div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			
+			mui.plusReady(function() {
+			    plus.navigator.setStatusBarStyle("UIStatusBarStyleBlackOpaque");
+				plus.navigator.setStatusBarBackground('#FEA33A');//设置状态栏的颜色	
+				code_draw();
+			// 点击后刷新验证码
+			$("#canvas").on('click', function() {
+				code_draw();
+			})
+			
+			var requrl="http://192.168.43.51:8080/DimaoManage/JavaApi";
+			localStorage.setItem("requrl",requrl);
+			
+			document.getElementById("btnreg").addEventListener("tap",function(){
+				mui.openWindow({
+					url:"register.html",
+					id:"register.html"
+				});
+				
+			});
+			
+			
+			
+			document.getElementById("btnlogin").addEventListener("tap",function(){
+				console.log(123);
+				var username=document.getElementById("tbusername").value;
+				var password=document.getElementById("tbpassword").value;
+				var requrl=localStorage.getItem("requrl");
+				 // 将输入的内容转为大写，可通过这步进行大小写验证
+				var val = $(".input-val").val().toLowerCase();
+				// 获取生成验证码值
+				var num = $('#canvas').attr('data-code');
+				if (val == '') {
+					mui.toast("验证码不能为空！");
+				} else if (val == num) {
+					 mui.ajax(requrl,{
+						data:{
+							rnum:"2",
+	                  		username:username,
+	                  		password:password
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						headers:{'Content-Type':'application/x-www-form-urlencoded'},
+						success:function(data){
+					    	console.log(JSON.stringify(data));	
+							if(data==null||data=="")
+							{
+								mui.toast("用户名或者密码错误!");	 
+							}
+							else
+							{
+								console.log(data[0]);
+								mui.toast("登录成功!");
+								localStorage.setItem("id",data[0].id);
+								localStorage.setItem("truename",data[0].truename);
+								localStorage.setItem("tel",data[0].tel);
+								localStorage.setItem("address",data[0].address);
+								localStorage.setItem("password",data[0].password);
+								var index=plus.webview.getWebviewById("index.html");
+									if(index)
+									{
+										mui.fire(index,"logintest");
+									}
+								mui.openWindow({
+									url:"main.html",
+									id:"main.html"
+								});
+								code_draw();
+							}	
+						}
+					});
+				} else {
+					 
+					mui.toast("验证码错误！请重新输入！")
+					$(".input-val").val('');
+					 
+					code_draw();
+				}
+				});
+			});
+		</script>
+		 <script>
+			function code_draw(){var canvas_width=$('#canvas').width();var canvas_height=$('#canvas').height();var canvas=document.getElementById("canvas");var context=canvas.getContext("2d");canvas.width=canvas_width;canvas.height=canvas_height;var sCode="A,B,C,E,F,G,H,J,K,L,M,N,P,Q,R,S,T,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0";var aCode=sCode.split(",");var aLength=aCode.length;var value=[];for(var i=0;i<=3;i++){var j=Math.floor(Math.random()*aLength);var deg=Math.random()*30*Math.PI/180;var txt=aCode[j];value[i]=txt.toLowerCase();var x=10+i*20;var y=20+Math.random()*8;context.font="bold 23px 寰蒋闆呴粦";context.translate(x,y);context.rotate(deg);context.fillStyle=code_randomColor();context.fillText(txt,0,0);context.rotate(-deg);context.translate(-x,-y);}
+			value=value.join("");$('#canvas').attr('data-code',value)
+			for(var i=0;i<=5;i++){context.strokeStyle=code_randomColor();context.beginPath();context.moveTo(Math.random()*canvas_width,Math.random()*canvas_height);context.lineTo(Math.random()*canvas_width,Math.random()*canvas_height);context.stroke();}
+			for(var i=0;i<=30;i++){context.strokeStyle=code_randomColor();context.beginPath();var x=Math.random()*canvas_width;var y=Math.random()*canvas_height;context.moveTo(x,y);context.lineTo(x+1,y+1);context.stroke();}}
+			function code_randomColor(){var r=Math.floor(Math.random()*256);var g=Math.floor(Math.random()*256);var b=Math.floor(Math.random()*256);return "rgb("+r+","+g+","+b+")";}
+		</script>
+ 
+	</body>
+
+</html>
